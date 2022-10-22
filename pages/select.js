@@ -1,13 +1,12 @@
 import { styled } from '@stitches/react';
 import Head from 'next/head';
-import Link from 'next/link';
 import React from 'react';
 import { NavBar } from '../components/NavBar';
 import { Button } from '../styles/button';
 import { Container } from '../styles/container';
 import { SubTitle, Title } from '../styles/text';
 
-export default function Home() {
+export default function Select() {
   const HeaderContainer = styled('div', {
     display: 'flex',
     marginTop: '$1000',
@@ -19,10 +18,6 @@ export default function Home() {
     marginTop: '$2000',
     justifyContent: 'center',
     gap: '$300'
-  });
-
-  const LinkStyled = styled('a', {
-    textDecoration: 'none'
   });
 
   return (
@@ -37,21 +32,10 @@ export default function Home() {
         <header>
           <HeaderContainer>
             <h1 className={Title()}>MapGames</h1>
-            <h2 className={SubTitle()}>Try your geo knowledge</h2>
+            <h2 className={SubTitle()}>Select quiz You want to take</h2>
           </HeaderContainer>
         </header>
-        <main>
-          <MainContentContainer>
-            <Button variant="primary" size="large">
-              <Link href="/select">
-                <LinkStyled>Select Game</LinkStyled>
-              </Link>
-            </Button>
-            <Button variant="secondary" size="large">
-              Login
-            </Button>
-          </MainContentContainer>
-        </main>
+        <main>test</main>
       </Container>
     </div>
   );
