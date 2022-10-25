@@ -11,14 +11,23 @@ export const Text = styled('span', {
       title: {
         color: '$lowContrast',
         font: '$apercu',
-        fontSize: '$title',
-        lineHeight: '$100'
+        fontSize: '$5xl',
+        lineHeight: '$2',
+        fontWeight: '$bold'
       },
       subTitle: {
         color: '$highContrast',
         font: '$mono',
-        fontSize: '$extraLarge',
-        lineHeight: '$100'
+        fontSize: '$xl',
+        lineHeight: '$2',
+        fontWeight: '$semibold'
+      },
+      sectionTitle: {
+        color: '$lowContrast',
+        font: '$mono',
+        fontSize: '$xl',
+        lineHeight: '$1',
+        fontWeight: '$semibold'
       }
     }
   }
@@ -33,5 +42,11 @@ export const Title = css('h1', Text, {
 export const SubTitle = css('h2', Text, {
   defaultVariants: {
     variant: 'subTitle'
+  }
+});
+
+export const SectionTitle = css('span', Text, {
+  defaultVariants: {
+    variant: 'sectionTitle'
   }
 });

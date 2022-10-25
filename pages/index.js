@@ -2,29 +2,22 @@ import { styled } from '@stitches/react';
 import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
-import { NavBar } from '../components/NavBar';
-import { Button } from '../styles/button';
-import { Container } from '../styles/container';
-import { SubTitle, Title } from '../styles/text';
+import { NavBar } from '../components';
+import { Container, HeaderContainer, Title, SubTitle, Button } from '../styles';
 
+const MainContentContainer = styled('div', {
+  display: 'flex',
+  marginTop: '$20',
+  justifyContent: 'center',
+  gap: '$4',
+  flexDirection: 'row',
+  px: '$4'
+});
+
+const LinkStyled = styled('a', {
+  textDecoration: 'none'
+});
 export default function Home() {
-  const HeaderContainer = styled('div', {
-    display: 'flex',
-    marginTop: '$1000',
-    alignItems: 'center',
-    flexDirection: 'column'
-  });
-  const MainContentContainer = styled('div', {
-    display: 'flex',
-    marginTop: '$2000',
-    justifyContent: 'center',
-    gap: '$300'
-  });
-
-  const LinkStyled = styled('a', {
-    textDecoration: 'none'
-  });
-
   return (
     <div>
       <Head>
@@ -42,12 +35,12 @@ export default function Home() {
         </header>
         <main>
           <MainContentContainer>
-            <Button variant="primary" size="large">
+            <Button variant="primary" size="lg">
               <Link href="/select">
                 <LinkStyled>Select Game</LinkStyled>
               </Link>
             </Button>
-            <Button variant="secondary" size="large">
+            <Button variant="secondary" size="lg">
               Login
             </Button>
           </MainContentContainer>

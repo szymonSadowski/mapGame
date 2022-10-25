@@ -2,11 +2,29 @@ import { styled } from '@stitches/react';
 
 export const Button = styled('button', {
   font: '$publicoText',
+  cursor: 'pointer',
+  border: 0,
+  padding: '$4',
+  margin: 0,
+  textDecoration: 'none',
+  appearance: 'none',
+  boxSizing: 'border-box',
+  userSelect: 'none',
+  WebkitTapHighlightColor: 'rgba(0,0,0,0)',
+  fontFamily: 'inherit',
+  fontWeight: '$medium',
+  lineHeight: 1,
   fontSize: '$small',
-  padding: '$50',
-  width: '120px',
-  // height: 'calc(100% + 6px)',
   borderRadius: '8px',
+  '&:focus': {
+    outline: 'none',
+    boxShadow: '0 0 0 2px $mauve5'
+  },
+  '&:disabled': {
+    pointerEvents: 'none',
+    opacity: '50%',
+    cursor: 'not-allowed'
+  },
   variants: {
     variant: {
       primary: {
@@ -14,8 +32,7 @@ export const Button = styled('button', {
         backgroundColor: '$elementBackground',
         border: '1px solid $border',
         '&:hover': {
-          backgroundColor: '$hoverBackground',
-          border: '1px solid $hoverBorder'
+          backgroundColor: '$hoverBackground'
         }
       },
       secondary: {
@@ -23,16 +40,39 @@ export const Button = styled('button', {
         backgroundColor: '$lowContrast',
         border: '1px solid $subtleBorder',
         '&:hover': {
-          backgroundColor: '$solidBackground',
-          border: '1px solid $hoverBorder'
+          backgroundColor: '$hoverSolidBackground'
         }
       }
     },
     size: {
-      large: {
-        width: '200px',
-        height: '50px',
-        fontSize: '$large'
+      xs: {
+        px: '10px',
+        fontSize: '$xs',
+        height: '$7'
+      },
+      sm: {
+        px: '$3',
+        fontSize: '$sm',
+        height: '$8'
+      },
+      md: {
+        px: '$2',
+        fontSize: '$md',
+        height: '$10'
+      },
+      lg: {
+        px: '$6',
+        fontSize: '$lg',
+        height: '$12',
+        minWidth: '120px'
+      }
+    },
+    icon: {
+      true: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '$1'
       }
     }
   }

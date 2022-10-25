@@ -2,6 +2,7 @@
 import React from 'react';
 import { styled } from '@stitches/react';
 import { ThemeToggle } from './ThemeToggle';
+
 export const NavBar = () => {
   const NavBar = styled('nav', {
     position: 'fixed',

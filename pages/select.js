@@ -1,25 +1,30 @@
 import { styled } from '@stitches/react';
 import Head from 'next/head';
-import React from 'react';
-import { NavBar } from '../components/NavBar';
-import { Button } from '../styles/button';
-import { Container } from '../styles/container';
-import { SubTitle, Title } from '../styles/text';
+import React, { useState } from 'react';
+import { NavBar, ScrollAreaComponent, Quiz } from '../components';
+import { quizes } from '../consts/quizes';
+import { Container, HeaderContainer, Title, SubTitle } from '../styles';
+import { PlayIcon } from '@radix-ui/react-icons';
+
+const MainContentContainer = styled('main', {
+  display: 'flex',
+  marginTop: '$10',
+  justifyContent: 'center'
+});
 
 export default function Select() {
-  const HeaderContainer = styled('div', {
-    display: 'flex',
-    marginTop: '$1000',
-    alignItems: 'center',
-    flexDirection: 'column'
+  const [state, setState] = useState({
+    loading: false,
+    quiz: null
   });
-  const MainContentContainer = styled('div', {
-    display: 'flex',
-    marginTop: '$2000',
-    justifyContent: 'center',
-    gap: '$300'
-  });
+  const handleStateChange = (key) => {
+    setState({
+      ...state,
+      quiz: key
+    });
+  };
 
+  console.log(state);
   return (
     <div>
       <Head>
@@ -32,10 +37,19 @@ export default function Select() {
         <header>
           <HeaderContainer>
             <h1 className={Title()}>MapGames</h1>
-            <h2 className={SubTitle()}>Select quiz You want to take</h2>
+            {!state.quiz ? <h2 className={SubTitle()}>Select quiz You want to take</h2> : null}
           </HeaderContainer>
         </header>
-        <main>test</main>
+        <MainContentContainer>
+          {!state.quiz ? (
+            <ScrollAreaComponent data={quizes} handleStateChange={handleStateChange}>
+              {' '}
+              <PlayIcon />
+            </ScrollAreaComponent>
+          ) : (
+            <Quiz />
+          )}
+        </MainContentContainer>
       </Container>
     </div>
   );

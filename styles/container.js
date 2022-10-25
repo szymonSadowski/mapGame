@@ -6,7 +6,10 @@ export const Container = styled('div', {
   backgroundImage: `url('/map_background.png')`,
   backgroundAttachment: 'fixed',
   backgroundPosition: 'center',
-  padding: '$300',
+  padding: '$5',
   backgroundColor: '$appBackground',
-  backgroundRepeat: 'no-repeat'
+  backgroundRepeat: 'no-repeat',
+  '@media only screen and (max-width: 700px)': {
+    backgroundPosition: 'bottom'
+  }
 });
