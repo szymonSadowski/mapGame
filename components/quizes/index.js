@@ -1,1 +1,1 @@
-export * from './AllCountries/AllCountries';
+export * from './AllCountries';

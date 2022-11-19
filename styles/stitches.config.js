@@ -1,6 +1,5 @@
-// stitches.config.ts
 import { createStitches } from '@stitches/react';
-import { green, greenDark, mauve, mauveDark } from '@radix-ui/colors';
+import { green, greenDark, mauve } from '@radix-ui/colors';
 
 export const styled = createStitches({
   theme: {
@@ -8,20 +7,21 @@ export const styled = createStitches({
       ...green,
       ...mauve,
       // Alias
-      appBackground: '$mauve5',
-      subtleBackground: '$green2',
+      appBackground: '$mauve1',
+      subtleBackground: '$mauve2',
       elementBackground: '$mauve3',
       hoverBackground: '$mauve4',
       selectBackground: '$green5',
       subtleBorder: '$green6',
       border: '$mauve6',
-      hoverBorder: '$green8',
+      hoverBorder: '$green5',
       solidBackground: '$green9',
       hoverSolidBackground: '$green10',
       lowContrast: '$green9',
       highContrast: '$green12',
       navBarColor: '$mauve4',
-      white: '$mauve1'
+      whiteAndBlack: 'hsl(300, 20.0%, 99.0%)',
+      mapFill: 'yellow'
     },
     fontSizes: {
       xs: '0.75rem',
@@ -99,12 +99,11 @@ export const styled = createStitches({
 export const darkTheme = styled.createTheme({
   colors: {
     ...greenDark,
-    ...mauveDark,
     ...mauve,
-    appBackground: '$mauve11',
-    subtleBackground: '$greenDark2',
-    elementBackground: '$mauve9',
-    hoverBackground: '$mauve10',
+    appBackground: 'hsl(246, 6.0%, 9.0%)',
+    subtleBackground: 'hsl(240, 5.1%, 11.6%)',
+    elementBackground: '$mauve3',
+    hoverBackground: '$mauve6',
     selectBackground: '$green5',
     subtleBorder: '$greenDark6',
     border: 'white',
@@ -114,7 +113,8 @@ export const darkTheme = styled.createTheme({
     lowContrats: '$greenDark11',
     highContrast: '$greenDark12',
     navBarColor: '$mauve11',
-    white: '$mauve1'
+    whiteAndBlack: '$mauve1',
+    mapFill: '#fdfdf9'
   }
 });
 
@@ -146,3 +146,31 @@ export const Global = styled.globalCss({
 
 globalStyles();
 Global();
+// const mauveDark = {
+//   mauve1: 'hsl(246, 6.0%, 9.0%)',
+//   mauve2: 'hsl(240, 5.1%, 11.6%)',
+//   mauve3: 'hsl(241, 5.0%, 14.3%)',
+//   mauve4: 'hsl(242, 4.9%, 16.5%)',
+//   mauve5: 'hsl(243, 4.9%, 18.8%)',
+//   mauve6: 'hsl(244, 4.9%, 21.5%)',
+//   mauve7: 'hsl(245, 4.9%, 25.4%)',
+//   mauve8: 'hsl(247, 4.8%, 32.5%)',
+//   mauve9: 'hsl(252, 4.0%, 45.2%)',
+//   mauve10: 'hsl(247, 3.4%, 50.7%)',
+//   mauve11: 'hsl(253, 4.0%, 63.7%)',
+//   mauve12: 'hsl(256, 6.0%, 93.2%)'
+// };
+// const mauve = {
+//   mauve1: 'hsl(300, 20.0%, 99.0%)',
+//   mauve2: 'hsl(300, 7.7%, 97.5%)',
+//   mauve3: 'hsl(294, 5.5%, 95.3%)',
+//   mauve4: 'hsl(289, 4.7%, 93.3%)',
+//   mauve5: 'hsl(283, 4.4%, 91.3%)',
+//   mauve6: 'hsl(278, 4.1%, 89.1%)',
+//   mauve7: 'hsl(271, 3.9%, 86.3%)',
+//   mauve8: 'hsl(255, 3.7%, 78.8%)',
+//   mauve9: 'hsl(252, 4.0%, 57.3%)',
+//   mauve10: 'hsl(253, 3.5%, 53.5%)',
+//   mauve11: 'hsl(252, 4.0%, 44.8%)',
+//   mauve12: 'hsl(260, 25.0%, 11.0%)'
+// };

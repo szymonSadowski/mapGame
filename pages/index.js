@@ -17,6 +17,16 @@ const MainContentContainer = styled('div', {
 const LinkStyled = styled('a', {
   textDecoration: 'none'
 });
+const DivStyled = styled('div', {
+  textDecoration: 'none',
+  color: '$lowContrast',
+  display: 'flex',
+  marginTop: '$2',
+  justifyContent: 'center'
+});
+const SpanStyled = styled('div', {
+  color: '$whiteAndBlack'
+});
 export default function Home() {
   return (
     <div>
@@ -29,8 +39,15 @@ export default function Home() {
         <NavBar />
         <header>
           <HeaderContainer>
-            <h1 className={Title()}>MapGames</h1>
-            <h2 className={SubTitle()}>Try your geo knowledge</h2>
+            <h1 className={Title()}>
+              The best geo games are{' '}
+              <DivStyled>
+                HERE <SpanStyled>.</SpanStyled>
+              </DivStyled>
+            </h1>
+            <h2 className={SubTitle()}>
+              Try your geo knowledge in our quzies and compete with others!
+            </h2>
           </HeaderContainer>
         </header>
         <main>

@@ -9,21 +9,18 @@ export const Text = styled('span', {
   variants: {
     variant: {
       title: {
-        color: '$lowContrast',
         font: '$apercu',
-        fontSize: '$5xl',
+        fontSize: '$7xl',
         lineHeight: '$2',
         fontWeight: '$bold'
       },
       subTitle: {
-        color: '$highContrast',
         font: '$mono',
-        fontSize: '$xl',
+        fontSize: '$2xl',
         lineHeight: '$2',
         fontWeight: '$semibold'
       },
       sectionTitle: {
-        color: '$lowContrast',
         font: '$mono',
         fontSize: '$xl',
         lineHeight: '$1',

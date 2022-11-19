@@ -12,6 +12,10 @@ const MainContentContainer = styled('main', {
   justifyContent: 'center'
 });
 
+const SpanStyled = styled('span', {
+  color: '$lowContrast'
+});
+
 export default function Select() {
   const [state, setState] = useState({
     loading: false,
@@ -23,8 +27,6 @@ export default function Select() {
       quiz: key
     });
   };
-
-  console.log(state);
   return (
     <div>
       <Head>
@@ -36,7 +38,9 @@ export default function Select() {
         <NavBar />
         <header>
           <HeaderContainer>
-            <h1 className={Title()}>MapGames</h1>
+            <h1 className={Title()}>
+              Map <SpanStyled>Games </SpanStyled>
+            </h1>
             {!state.quiz ? <h2 className={SubTitle()}>Select quiz You want to take</h2> : null}
           </HeaderContainer>
         </header>

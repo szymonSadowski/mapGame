@@ -6,6 +6,7 @@ export const HeaderContainer = styled('div', {
   alignItems: 'center',
   flexDirection: 'column',
   '@media only screen and (max-width: 700px)': {
-    marginTop: '$5'
+    marginTop: '$5',
+    textAlign: 'center'
   }
 });

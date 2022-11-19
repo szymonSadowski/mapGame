@@ -100,7 +100,7 @@ export const ScrollAreaComponent = ({ data, handleStateChange, children }) => {
   };
   return (
     <ScrollArea>
-      <ScrollAreaViewport css={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}>
+      <ScrollAreaViewport css={{ backgroundColor: '$subtleBackground' }}>
         <Box style={{ padding: '15px 20px' }}>
           <Text className={SectionTitle()} css={{ padding: '$4' }}>
             Quizes
