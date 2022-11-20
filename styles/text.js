@@ -1,7 +1,7 @@
 import { styled, css } from '@stitches/react';
 
 export const Text = styled('span', {
-  color: '$highContrast',
+  color: '$text',
   font: '$publicoText',
   fontSize: '$large',
   display: 'block',
@@ -26,6 +26,9 @@ export const Text = styled('span', {
         lineHeight: '$1',
         fontWeight: '$semibold'
       }
+    },
+    color: {
+      color: '$highlight'
     }
   }
 });

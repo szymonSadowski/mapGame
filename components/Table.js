@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled } from '@stitches/react';
+import { styled } from '../styles/stitches.config';
 import { mauve, blackA } from '@radix-ui/colors';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 import { Button, SectionTitle, Text } from '../styles';
@@ -11,11 +11,11 @@ const StyledScrollArea = styled(ScrollAreaPrimitive.Root, {
   height: 600,
   borderRadius: 4,
   overflow: 'hidden',
-  boxShadow: `0 2px 10px ${blackA.blackA7}`,
-  '@media only screen and (max-width: 1200px)': {
+  boxShadow: `0 2px 10px $colors$shadow`,
+  '@bp3': {
     width: '90%'
   },
-  '@media only screen and (max-width: 600px)': {
+  '@bp2': {
     width: '100%'
   }
 });
@@ -87,7 +87,7 @@ const Tag = styled('div', {
   display: 'grid',
   alignItems: 'center',
   gridTemplateColumns: '0.6fr 1fr 0.5fr',
-  '@media only screen and (max-width: 700px)': {
+  '@bp2': {
     display: 'flex',
     gap: '$3',
     flexDirection: 'column'

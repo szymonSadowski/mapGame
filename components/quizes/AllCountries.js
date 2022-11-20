@@ -1,4 +1,4 @@
-import { styled } from '@stitches/react';
+import { styled } from '../../styles/stitches.config';
 import { React } from 'react';
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simple-maps';
 import { blackA } from '@radix-ui/colors';
@@ -13,7 +13,7 @@ const QuizContainer = styled('div', {
   overflow: 'hidden',
   boxShadow: `0 2px 10px ${blackA.blackA7}`,
   backgroundColor: '$subtleBackground',
-  '@media only screen and (max-width: 600px)': {
+  '@bp2': {
     height: 200
   }
 });
@@ -66,7 +66,7 @@ export const AllCountries = ({ guessedCountries }) => {
       <QuizContainer>
         <ComposableMap
           projectionConfig={{
-            scale: 200
+            scale: 150
           }}
           width={mapWidth}
           height={mapHeight}

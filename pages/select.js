@@ -13,7 +13,7 @@ const MainContentContainer = styled('main', {
 });
 
 const SpanStyled = styled('span', {
-  color: '$lowContrast'
+  color: '$highlight'
 });
 
 export default function Select() {

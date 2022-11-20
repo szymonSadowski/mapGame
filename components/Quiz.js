@@ -1,32 +1,45 @@
-import { styled } from '@stitches/react';
+import { styled } from '../styles/stitches.config';
 import { React, useState } from 'react';
 import { AllCountries } from './quizes';
-import { blackA } from '@radix-ui/colors';
 import { useQuery } from 'react-query';
-import { Input } from '../styles';
+import { Input, Text, SectionTitle } from '../styles';
 import { capitalize } from '../utils';
 import { getCountries } from '../api';
+import { ProgressBar } from './Progress';
 
 const InputContainer = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   borderRadius: 4,
   overflow: 'hidden',
-  boxShadow: `0 2px 10px ${blackA.blackA7}`,
+  boxShadow: `0 2px 10px $colors$shadow`,
   backgroundColor: '$subtleBackground',
-  marginTop: '$10',
-  padding: '$4'
+  mt: '$10',
+  p: '$4'
+});
+
+const InfoContainer = styled('div', {
+  color: 'white',
+  backgroundColor: '$subtleBackground',
+  boxShadow: `0 2px 10px $colors$shadow`,
+  mt: '$4',
+  p: '$4'
+});
+
+const Info = styled('div', {
+  display: 'flex',
+  justifyContent: 'space-around',
+  p: '$4',
+  mb: '$2',
+  borderBottom: '2px solid $colors$border'
 });
 const Answers = styled('div', {
   display: 'grid',
-  gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr',
-  color: 'white',
-  backgroundColor: 'red',
-  padding: '$4'
+  gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr'
 });
 
 const Answer = styled('div', {
-  padding: '$2'
+  p: '$2'
 });
 
 export const Quiz = () => {
@@ -40,6 +53,7 @@ export const Quiz = () => {
   data.map((country) => {
     country.independent && countries.push(country.name.common);
   });
+  const maxValue = countries.length;
   const handleOnChange = (event) => {
     const guess = capitalize(event.target.value);
     if (countries.includes(guess)) {
@@ -47,7 +61,6 @@ export const Quiz = () => {
       event.target.value = '';
     }
   };
-  console.log(countries);
   return (
     /// add progress bar
     <main>
@@ -55,15 +68,28 @@ export const Quiz = () => {
       <InputContainer>
         <Input placeholder={'Country'} onChange={handleOnChange} />
       </InputContainer>
-      <Answers>
-        {countries.map((country, index) => {
-          return (
-            <Answer key={country}>
-              {index}.{guessedCountries.includes(country) ? <> {country}</> : null}
-            </Answer>
-          );
-        })}
-      </Answers>
+      <InfoContainer>
+        <Info>
+          <Text className={SectionTitle()}>
+            {' '}
+            {guessedCountries.length} / {countries.length}
+          </Text>
+          <ProgressBar currentValue={guessedCountries.length} maxValue={maxValue} />
+        </Info>
+        <Answers>
+          {countries.map((country, index) => {
+            return (
+              <Answer key={country}>
+                <Text>
+                  {' '}
+                  <>{index + 1}. </>
+                  {guessedCountries.includes(country) ? <>{country}</> : null}
+                </Text>
+              </Answer>
+            );
+          })}
+        </Answers>
+      </InfoContainer>
     </main>
   );
 };

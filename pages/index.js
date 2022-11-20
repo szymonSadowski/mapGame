@@ -19,13 +19,13 @@ const LinkStyled = styled('a', {
 });
 const DivStyled = styled('div', {
   textDecoration: 'none',
-  color: '$lowContrast',
+  color: '$highlight',
   display: 'flex',
   marginTop: '$2',
   justifyContent: 'center'
 });
 const SpanStyled = styled('div', {
-  color: '$whiteAndBlack'
+  color: '$text'
 });
 export default function Home() {
   return (

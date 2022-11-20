@@ -18,7 +18,7 @@ export const Button = styled('button', {
   borderRadius: '8px',
   '&:focus': {
     outline: 'none',
-    boxShadow: '0 0 0 2px $mauve5'
+    boxShadow: '0 0 0 2px $colors$shadow'
   },
   '&:disabled': {
     pointerEvents: 'none',
@@ -28,19 +28,19 @@ export const Button = styled('button', {
   variants: {
     variant: {
       primary: {
-        color: '$lowContrast',
+        color: '$text',
         backgroundColor: '$elementBackground',
         border: '1px solid $border',
         '&:hover': {
-          backgroundColor: '$hoverBackground'
+          backgroundColor: '$elementHover'
         }
       },
       secondary: {
-        color: 'white',
-        backgroundColor: '$lowContrast',
+        color: '$text',
+        backgroundColor: '$elementGreenBackground',
         border: '1px solid $subtleBorder',
         '&:hover': {
-          backgroundColor: '$hoverSolidBackground'
+          backgroundColor: '$highlight'
         }
       }
     },

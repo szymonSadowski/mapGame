@@ -15,6 +15,8 @@ export const Input = styled('input', {
   border: '1px solid',
   borderColor: '$solidBorder',
   height: 35,
+  boxShadow: '0 2px 10px $colors$shadow',
+  backgroundColor: '$whiteAndBlack',
 
   '&:focus': { border: '3px solid', borderColor: '$solidBorder' }
 });
