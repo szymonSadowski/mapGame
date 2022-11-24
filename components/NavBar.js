@@ -1,6 +1,5 @@
-// ./ThemeToggle.tsx
 import React from 'react';
-import { styled } from '@stitches/react';
+import { styled } from '../styles';
 import { ThemeToggle } from './ThemeToggle';
 
 export const NavBar = () => {

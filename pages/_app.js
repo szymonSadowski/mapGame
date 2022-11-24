@@ -2,7 +2,6 @@ import { ThemeProvider } from 'next-themes';
 import React from 'react';
 import { darkTheme, globalCss } from '../styles/stitches.config';
 import { QueryClient, QueryClientProvider } from 'react-query';
-
 const GlobalStyle = globalCss({
   body: {
     margin: 0,

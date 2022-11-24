@@ -1,23 +1,15 @@
 import React from 'react';
-import { styled } from '../styles/stitches.config';
 import { mauve, blackA } from '@radix-ui/colors';
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
-import { Button, SectionTitle, Text } from '../styles';
-
+import { styled, Button, SectionTitle, Text } from '../styles';
+import Link from 'next/link';
 const SCROLLBAR_SIZE = 10;
 
 const StyledScrollArea = styled(ScrollAreaPrimitive.Root, {
-  width: '50%',
   height: 600,
   borderRadius: 4,
   overflow: 'hidden',
-  boxShadow: `0 2px 10px $colors$shadow`,
-  '@bp3': {
-    width: '90%'
-  },
-  '@bp2': {
-    width: '100%'
-  }
+  boxShadow: `0 2px 10px $colors$shadow`
 });
 
 const StyledViewport = styled(ScrollAreaPrimitive.Viewport, {
@@ -87,17 +79,14 @@ const Tag = styled('div', {
   display: 'grid',
   alignItems: 'center',
   gridTemplateColumns: '0.6fr 1fr 0.5fr',
+  gap: '$4',
   '@bp2': {
     display: 'flex',
-    gap: '$3',
     flexDirection: 'column'
   }
 });
 
-export const ScrollAreaComponent = ({ data, handleStateChange, children }) => {
-  const handleClick = (key) => {
-    handleStateChange(key);
-  };
+export const ScrollAreaComponent = ({ data, children }) => {
   return (
     <ScrollArea>
       <ScrollAreaViewport css={{ backgroundColor: '$subtleBackground' }}>
@@ -110,15 +99,18 @@ export const ScrollAreaComponent = ({ data, handleStateChange, children }) => {
               <Tag>
                 <span>{quiz.name}</span>
                 <span> {quiz.description}</span>
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  icon="true"
-                  onClick={() => handleClick(quiz.key)}>
-                  {' '}
-                  Play
-                  {children}
-                </Button>
+                {/* <Link href="/quizes/[quiz]" as={`quizes/${quiz}`} key={quiz.key}> */}
+                <Link
+                  href={{
+                    pathname: '/quiz',
+                    query: { quiz: `${quiz.key}` }
+                  }}>
+                  <Button variant="secondary" size="lg" icon="true">
+                    {' '}
+                    Play
+                    {children}
+                  </Button>
+                </Link>
               </Tag>
             </TagContainer>
           ))}

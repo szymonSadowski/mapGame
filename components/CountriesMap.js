@@ -1,4 +1,4 @@
-import { styled } from '../../styles/stitches.config';
+import { styled } from '../styles/stitches.config';
 import { React } from 'react';
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simple-maps';
 import { blackA } from '@radix-ui/colors';
@@ -17,7 +17,7 @@ const QuizContainer = styled('div', {
     height: 200
   }
 });
-export const AllCountries = ({ guessedCountries }) => {
+export const CountriesMap = ({ guessedCountries }) => {
   const defaultStyle = {
     default: {
       fill: 'hsl(153, 67.0%, 28.5%)',
@@ -60,13 +60,13 @@ export const AllCountries = ({ guessedCountries }) => {
     }
   };
   const mapWidth = 1000;
-  const mapHeight = 400;
+  const mapHeight = 500;
   return (
     <Container>
       <QuizContainer>
         <ComposableMap
           projectionConfig={{
-            scale: 150
+            scale: 180
           }}
           width={mapWidth}
           height={mapHeight}
@@ -77,7 +77,7 @@ export const AllCountries = ({ guessedCountries }) => {
           <ZoomableGroup
             translateExtent={[
               [0, 0],
-              [mapWidth + 100, mapHeight]
+              [mapWidth, mapHeight]
             ]}>
             <Geographies geography="/features.json">
               {({ geographies }) =>
