@@ -2,5 +2,6 @@ export const STATUS = {
   BEGUN: 'Begun',
   STARTED: 'Started',
   STOPPED: 'Stopped',
-  FINISHED: 'Finished'
+  FINISHED: 'Finished',
+  COMPLETED: 'Completed'
 };

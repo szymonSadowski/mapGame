@@ -1,8 +1,7 @@
-import { styled } from '../../styles/stitches.config';
 import { React, useState } from 'react';
-import { CountriesMap, Countdown, ProgressBar } from '../../components';
+import { CountriesMap, Countdown, ProgressBar, Dialog } from '../../components';
 import { useQuery } from 'react-query';
-import { Button, Input, Text, SectionTitle } from '../../styles';
+import { styled, Button, Input, Text, SectionTitle } from '../../styles';
 import { capitalize } from '../../utils';
 import { getCountries } from '../../api';
 import { STATUS } from '../../consts/statuses';
@@ -46,6 +45,8 @@ const Answer = styled('div', {
 export default function Quiz() {
   const [guessedCountries, setGuessedCountries] = useState(['Spain']);
   const [status, setStatus] = useState(STATUS.BEGUN);
+  const [open, setOpen] = useState(true);
+
   const { data, error, isLoading } = useQuery('countries', getCountries);
   if (error) return <div>Request Failed</div>;
   if (isLoading) return <div>Loading...</div>;
@@ -60,36 +61,46 @@ export default function Quiz() {
       setGuessedCountries([...guessedCountries, userGuess]);
       event.target.value = '';
     }
+    if (guessedCountries.length === countries.length) {
+      setStatus(STATUS.COMPLETED);
+    }
   };
 
+  const score = `${guessedCountries.length} / ${countries.length}`;
   return (
     <Layout header>
       <main>
-        {status === STATUS.FINISHED && <div>FINISHED</div>}
+        {status === STATUS.FINISHED && <Dialog open={open} setOpen={setOpen} score={score} />}
+        {status === STATUS.COMPLETED && (
+          <Dialog open={open} setOpen={setOpen} completed score={score} />
+        )}
         <CountriesMap guessedCountries={guessedCountries} />
-        <InputContainer>
-          {status === STATUS.BEGUN ? (
-            <Button
-              variant="primary"
-              size="lg"
-              icon="true"
-              onClick={() => setStatus(STATUS.STARTED)}>
-              {' '}
-              Start
-            </Button>
-          ) : (
-            <>
-              <Countdown timeForQuiz={10} status={status} setStatus={setStatus} />
-              <Input placeholder={'Country'} onChange={handleOnChange} />
-            </>
-          )}
-        </InputContainer>
+        {status !== (STATUS.FINISHED || STATUS.COMPLETED) ? (
+          <InputContainer>
+            {status === STATUS.BEGUN ? (
+              <Button
+                variant="primary"
+                size="lg"
+                icon="true"
+                onClick={() => setStatus(STATUS.STARTED)}>
+                {' '}
+                Start
+              </Button>
+            ) : (
+              <>
+                <Countdown timeForQuiz={1} status={status} setStatus={setStatus} />
+                <Input
+                  placeholder={'Country'}
+                  onChange={handleOnChange}
+                  disabled={status === STATUS.COMPLETED || STATUS.FINISHED}
+                />
+              </>
+            )}
+          </InputContainer>
+        ) : null}
         <InfoContainer>
           <Info>
-            <Text className={SectionTitle()}>
-              {' '}
-              {guessedCountries.length} / {countries.length}
-            </Text>
+            <Text className={SectionTitle()}> {score}</Text>
             <ProgressBar currentValue={guessedCountries.length} maxValue={countries.length} />
           </Info>
           <Answers>

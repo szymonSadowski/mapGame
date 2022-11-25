@@ -99,7 +99,6 @@ export const ScrollAreaComponent = ({ data, children }) => {
               <Tag>
                 <span>{quiz.name}</span>
                 <span> {quiz.description}</span>
-                {/* <Link href="/quizes/[quiz]" as={`quizes/${quiz}`} key={quiz.key}> */}
                 <Link
                   href={{
                     pathname: '/quiz',
