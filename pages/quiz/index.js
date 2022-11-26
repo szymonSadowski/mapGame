@@ -88,7 +88,7 @@ export default function Quiz() {
               </Button>
             ) : (
               <>
-                <Countdown timeForQuiz={1} status={status} setStatus={setStatus} />
+                <Countdown timeForQuiz={10} status={status} setStatus={setStatus} />
                 <Input
                   placeholder={'Country'}
                   onChange={handleOnChange}

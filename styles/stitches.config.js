@@ -226,7 +226,7 @@ const darkModeConfig = {
     // hoverBackground: '$mauve6',
     // selectBackground: '$green5',
     // subtleBorder: '$greenDark6',
-    border: 'hsl(198, 6.6%, 15.8%)',
+    border: 'hsl(199, 6.4%, 17.9%)',
     // hoverBorder: '$green8',
     // solidBackground: '$green9',
     // hoverSolidBackground: '$green10',
