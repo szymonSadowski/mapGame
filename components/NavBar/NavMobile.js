@@ -185,7 +185,7 @@ const ViewportPosition = styled('div', {
   perspective: '2000px'
 });
 
-export const NavMobile = () => {
+export const NavMobile = ({ children }) => {
   return (
     <NavigationMenuRoot>
       <NavigationMenuList>
@@ -197,6 +197,7 @@ export const NavMobile = () => {
             <List layout="two">
               <ListItem title="Home" href="/" />
               <ListItem title="Select" href="/select" />
+              {children}
             </List>
           </NavigationMenuContent>
         </NavigationMenu.Item>
