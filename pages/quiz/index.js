@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import { CountriesMap, Countdown, ProgressBar, Dialog } from '../../components';
+import { CountriesMap, Countdown, ProgressBar, Dialog, Loading } from '../../components';
 import { useQuery } from 'react-query';
 import { styled, Button, Input, Text, SectionTitle } from '../../styles';
 import { capitalize } from '../../utils';
@@ -10,6 +10,7 @@ import { Layout } from '../../components/Layouts';
 const InputContainer = styled('div', {
   display: 'flex',
   justifyContent: 'center',
+  alignItems: 'center',
   borderRadius: 4,
   overflow: 'hidden',
   boxShadow: `0 2px 10px $colors$shadow`,
@@ -49,7 +50,7 @@ export default function Quiz() {
 
   const { data, error, isLoading } = useQuery('countries', getCountries);
   if (error) return <div>Request Failed</div>;
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loading />;
 
   let countries = [];
   data.map((country) => {
@@ -100,7 +101,9 @@ export default function Quiz() {
         ) : null}
         <InfoContainer>
           <Info>
-            <Text className={SectionTitle()}> {score}</Text>
+            <Text className={SectionTitle()} css={{ display: 'inline-block' }}>
+              {score}
+            </Text>
             <ProgressBar currentValue={guessedCountries.length} maxValue={countries.length} />
           </Info>
           <Answers>

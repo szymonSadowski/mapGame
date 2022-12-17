@@ -46,7 +46,9 @@ export default function Home() {
           </Link>
         </Button>
         <Button variant="secondary" size="lg">
-          Login
+          <Link href="/login">
+            <LinkStyled>Login</LinkStyled>
+          </Link>
         </Button>
       </MainContentContainer>
     </Layout>

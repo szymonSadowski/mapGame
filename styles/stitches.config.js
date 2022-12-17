@@ -45,19 +45,10 @@ export const { styled, css, config, theme, createTheme, reset, getCssText, globa
         subtleBackground: '$slate2',
         elementBackground: '$slate6',
         hoverBackground: '$green6',
-        // selectBackground: '$green5',
-        // subtleBorder: '$green6',
         border: '$slate5',
-        // hoverBorder: '$green5',
-        // solidBackground: '$green9',
-        // hoverSolidBackground: '$green10',
         highlight: '$green9',
         elementGreenBackground: '$green7',
         elementHover: '$slate8',
-        // highContrast: '$green12',
-        // navBarColor: '$mauve4',
-        // whiteAndBlack: 'hsl(300, 20.0%, 99.0%)',
-        // mapFill: 'yellow',
         shadow: '$blackA7',
         text: '$slate12'
       },
@@ -121,7 +112,7 @@ export const { styled, css, config, theme, createTheme, reset, getCssText, globa
     media: {
       light: '(prefers-color-scheme: light)',
       dark: '(prefers-color-scheme: dark)',
-      bp1: '(max-width: 280px)',
+      bp1: '(max-width: 450px)',
       bp2: '(max-width: 768px)',
       bp3: '(max-width: 1024px)',
       bp4: '(max-width: 1440px)'
@@ -221,20 +212,8 @@ const darkModeConfig = {
     elementBackground: 'hsl(199, 6.4%, 17.9%)', //slateDark6,
     elementHover: 'hsl(207, 5.6%, 31.6%)', // slateDark8
     elementGreenBackground: 'hsl(153, 51.8%, 21.8%)', // greenDark7
-    // subtleBackground: 'hsl(240, 5.1%, 11.6%)',
-    // elementBackground: '$mauve3',
-    // hoverBackground: '$mauve6',
-    // selectBackground: '$green5',
-    // subtleBorder: '$greenDark6',
     border: 'hsl(199, 6.4%, 17.9%)',
-    // hoverBorder: '$green8',
-    // solidBackground: '$green9',
-    // hoverSolidBackground: '$green10',
     highlight: 'hsl(151, 55.0%, 41.5%)', //greenDark9,
-    // highContrast: '$greenDark12',
-    // navBarColor: '$mauve11',
-    // whiteAndBlack: '$mauve1',
-    // mapFill: '#fdfdf9',
     shadow: '$blackA7'
   }
 };
@@ -286,33 +265,5 @@ const globalStyles = globalCss({
   }
 });
 globalStyles();
-// Global();
+
 export const darkTheme = createTheme('dark-theme', darkModeConfig);
-// const mauveDark = {
-//   mauve1: 'hsl(246, 6.0%, 9.0%)',
-//   mauve2: 'hsl(240, 5.1%, 11.6%)',
-//   mauve3: 'hsl(241, 5.0%, 14.3%)',
-//   mauve4: 'hsl(242, 4.9%, 16.5%)',
-//   mauve5: 'hsl(243, 4.9%, 18.8%)',
-//   mauve6: 'hsl(244, 4.9%, 21.5%)',
-//   mauve7: 'hsl(245, 4.9%, 25.4%)',
-//   mauve8: 'hsl(247, 4.8%, 32.5%)',
-//   mauve9: 'hsl(252, 4.0%, 45.2%)',
-//   mauve10: 'hsl(247, 3.4%, 50.7%)',
-//   mauve11: 'hsl(253, 4.0%, 63.7%)',
-//   mauve12: 'hsl(256, 6.0%, 93.2%)'
-// };
-// const mauve = {
-//   mauve1: 'hsl(300, 20.0%, 99.0%)',
-//   mauve2: 'hsl(300, 7.7%, 97.5%)',
-//   mauve3: 'hsl(294, 5.5%, 95.3%)',
-//   mauve4: 'hsl(289, 4.7%, 93.3%)',
-//   mauve5: 'hsl(283, 4.4%, 91.3%)',
-//   mauve6: 'hsl(278, 4.1%, 89.1%)',
-//   mauve7: 'hsl(271, 3.9%, 86.3%)',
-//   mauve8: 'hsl(255, 3.7%, 78.8%)',
-//   mauve9: 'hsl(252, 4.0%, 57.3%)',
-//   mauve10: 'hsl(253, 3.5%, 53.5%)',
-//   mauve11: 'hsl(252, 4.0%, 44.8%)',
-//   mauve12: 'hsl(260, 25.0%, 11.0%)'
-// };

@@ -21,6 +21,7 @@ export const ThemeToggle = () => {
     backgroundColor: 'transparent',
     padding: '5px 20px 5px 20px',
     border: '0',
+    cursor: 'pointer',
     '&:hover': {
       backgroundColor: '$hoverBackground'
     }

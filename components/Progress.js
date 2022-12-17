@@ -6,7 +6,7 @@ const ProgressRoot = styled(Progress.Root, {
   overflow: 'hidden',
   background: '$elementGreenBackground',
   borderRadius: '99999px',
-  width: 300,
+  width: '60%',
   height: 25,
   transform: 'translateZ(0)'
 });

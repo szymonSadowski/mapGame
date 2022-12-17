@@ -1,11 +1,11 @@
-import { styled, css } from '@stitches/react';
+import { css } from '@stitches/react';
+import { styled } from './stitches.config';
 
 export const Text = styled('span', {
   color: '$text',
   font: '$publicoText',
   fontSize: '$large',
   display: 'block',
-  cursor: 'pointer',
   variants: {
     variant: {
       title: {
@@ -26,9 +26,6 @@ export const Text = styled('span', {
         lineHeight: '$1',
         fontWeight: '$semibold'
       }
-    },
-    color: {
-      color: '$highlight'
     }
   }
 });
@@ -48,5 +45,12 @@ export const SubTitle = css('h2', Text, {
 export const SectionTitle = css('span', Text, {
   defaultVariants: {
     variant: 'sectionTitle'
+  }
+});
+
+export const PointerText = css('span', {
+  cursor: 'pointer',
+  '&:hover': {
+    color: '$highlight'
   }
 });

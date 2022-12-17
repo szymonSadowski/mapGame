@@ -47,23 +47,21 @@ export const Button = styled('button', {
     size: {
       xs: {
         px: '10px',
-        fontSize: '$xs',
-        height: '$7'
+        fontSize: '$xs'
+        // height: '$7'
       },
       sm: {
         px: '$3',
-        fontSize: '$sm',
-        height: '$8'
+        fontSize: '$sm'
       },
       md: {
         px: '$2',
-        fontSize: '$md',
-        height: '$10'
+        fontSize: '$md'
       },
       lg: {
         px: '$6',
         fontSize: '$lg',
-        height: '$12',
+        // height: '$12',
         minWidth: '120px'
       }
     },
