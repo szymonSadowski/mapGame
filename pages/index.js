@@ -25,9 +25,9 @@ const DivStyled = styled('div', {
 const SpanStyled = styled('span', {
   color: '$text'
 });
-export default function Home() {
+export default function Home({ session }) {
   return (
-    <Layout>
+    <Layout session={session}>
       <Header>
         <h1 className={Title()}>
           The best geo games are{' '}
@@ -41,7 +41,7 @@ export default function Home() {
       </Header>
       <MainContentContainer>
         <Button variant="primary" size="lg">
-          <Link href="/select">
+          <Link href="/quiz">
             <LinkStyled>Select Game</LinkStyled>
           </Link>
         </Button>

@@ -81,10 +81,7 @@ export const Dialog = ({ open, setOpen, completed, score }) => {
               </Button>
             </AlertDialog.Action>
             <AlertDialog.Action asChild>
-              <Link
-                href={{
-                  pathname: '/select'
-                }}>
+              <Link href="/select" passHref legacyBehavior>
                 <Button variant="secondary">Sure!</Button>
               </Link>
             </AlertDialog.Action>

@@ -197,6 +197,7 @@ export const NavMobile = ({ children }) => {
             <List layout="two">
               <ListItem title="Home" href="/" />
               <ListItem title="Select" href="/select" />
+              {children && <ListItem title="Profile" href="/profile" />}
               {children}
             </List>
           </NavigationMenuContent>

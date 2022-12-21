@@ -31,3 +31,26 @@ export const MainContentContainer = styled('main', {
   mt: '$10',
   justifyContent: 'center'
 });
+
+export const ProfilePageContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '$4',
+  width: '60%'
+});
+
+export const FlexContainer = styled('div', {
+  display: 'flex',
+  gap: '$4',
+  width: '100%',
+  justifyContent: 'center',
+  alignItems: 'center'
+});
+export const FlexContainerColumn = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '$4',
+  width: '100%',
+  justifyContent: 'center',
+  alignItems: 'center'
+});

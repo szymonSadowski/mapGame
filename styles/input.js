@@ -2,7 +2,8 @@ import { styled } from './stitches.config';
 
 export const Input = styled('input', {
   all: 'unset',
-  maxWidth: '50%',
+  maxWidth: '100%',
+  minHeight: '40px',
   flex: '1',
   display: 'inline-flex',
   alignItems: 'center',
@@ -17,6 +18,18 @@ export const Input = styled('input', {
   height: 35,
   boxShadow: '0 2px 10px $colors$shadow',
   backgroundColor: '$whiteAndBlack',
+  '&:focus': { border: '3px solid', borderColor: '$solidBorder' },
+  '&:disabled': { backgroundColor: '$elementBackground' }
+});
 
-  '&:focus': { border: '3px solid', borderColor: '$solidBorder' }
+export const InputContainer = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderRadius: 4,
+  overflow: 'hidden',
+  boxShadow: `0 2px 10px $colors$shadow`,
+  backgroundColor: '$subtleBackground',
+  mt: '$10',
+  p: '$4'
 });

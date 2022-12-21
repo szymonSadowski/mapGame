@@ -26,6 +26,7 @@ const NavItemsContainer = styled('div', {
 });
 const NavButtonsContainer = styled('div', {
   display: 'flex',
+  alignItems: 'center',
   gap: '$4'
 });
 
@@ -37,9 +38,11 @@ export const NavBar = () => {
     return (
       <>
         {session && (
-          <Button variant={'secondary'} size="sm" onClick={() => supabase.auth.signOut()}>
-            Sign Out
-          </Button>
+          <Link href="/">
+            <Button variant={'secondary'} size="sm" onClick={() => supabase.auth.signOut()}>
+              Sign Out
+            </Button>
+          </Link>
         )}
       </>
     );
@@ -67,9 +70,17 @@ export const NavBar = () => {
               <Text className={PointerText()}>Select</Text>
             </Link>
           </NavButtonsContainer>
-          <div>
+          <NavButtonsContainer>
+            {session && (
+              <Link
+                href={{
+                  pathname: '/profile'
+                }}>
+                <Text className={PointerText()}>Profile</Text>
+              </Link>
+            )}
             <SingOutButton />
-          </div>
+          </NavButtonsContainer>
         </NavItemsContainer>
       )}
     </NavBarContainer>
