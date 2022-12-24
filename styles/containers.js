@@ -2,7 +2,6 @@ import { styled } from './stitches.config';
 
 export const Container = styled('div', {
   minHeight: '95vh',
-  minWidth: '100wv',
   backgroundImage: `url('./map_background.png')`,
   backgroundAttachment: 'fixed',
   backgroundPosition: 'bottom',
@@ -27,21 +26,18 @@ export const HeaderContainer = styled('div', {
 });
 
 export const MainContentContainer = styled('main', {
-  display: 'flex',
-  mt: '$10',
-  justifyContent: 'center'
+  mt: '$10'
 });
 
 export const ProfilePageContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: '$4',
-  width: '60%'
+  gap: '$6'
 });
 
 export const FlexContainer = styled('div', {
   display: 'flex',
-  gap: '$4',
+  gap: '$8',
   width: '100%',
   justifyContent: 'center',
   alignItems: 'center'
@@ -49,8 +45,7 @@ export const FlexContainer = styled('div', {
 export const FlexContainerColumn = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: '$4',
-  width: '100%',
+  gap: '$8',
   justifyContent: 'center',
   alignItems: 'center'
 });

@@ -65,9 +65,9 @@ export const NavBar = () => {
             </Link>
             <Link
               href={{
-                pathname: '/select'
+                pathname: '/quiz'
               }}>
-              <Text className={PointerText()}>Select</Text>
+              <Text className={PointerText()}>Quizes</Text>
             </Link>
           </NavButtonsContainer>
           <NavButtonsContainer>

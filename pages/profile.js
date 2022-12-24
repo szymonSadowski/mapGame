@@ -9,11 +9,14 @@ import {
   MainContentContainer,
   ProfilePageContainer,
   SectionTitle,
-  Text
+  Text,
+  InfoContainer,
+  TableContainer
 } from '../styles';
 import { Loading } from '../components';
 import Avatar from '../components/Avatar';
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs';
+import { quizesKeys } from '../consts/quizes';
 
 export default function Profile({ session }) {
   const supabase = useSupabaseClient();
@@ -21,15 +24,14 @@ export default function Profile({ session }) {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState(null);
   const [avatar_url, setAvatarUrl] = useState(null);
-  console.log(user);
+  const [records, setRecords] = useState(null);
   useEffect(() => {
     getProfile();
+    getRecords();
   }, [session]);
-
   async function getProfile() {
     try {
       setLoading(true);
-
       let { data, error, status } = await supabase
         .from('profiles')
         .select(`username, website, avatar_url`)
@@ -72,7 +74,22 @@ export default function Profile({ session }) {
       setLoading(false);
     }
   }
-
+  async function getRecords() {
+    try {
+      setLoading(true);
+      let { data, error } = await supabase.from('records').select('*');
+      if (error) throw error;
+      if (data) {
+        console.log(data);
+        setRecords(data);
+      }
+    } catch (error) {
+      alert('Error fetching the data!');
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  }
   return (
     <Layout header subTitle={'Your Profile'}>
       <MainContentContainer>
@@ -112,6 +129,26 @@ export default function Profile({ session }) {
               disabled={loading}>
               {loading ? 'Loading ...' : 'Update'}
             </Button>
+            <InfoContainer>
+              <TableContainer>
+                <Text className={SectionTitle()}>Quiz</Text>
+                <Text className={SectionTitle()}>Score</Text>
+              </TableContainer>
+              {records ? (
+                <>
+                  {records.map((record) => {
+                    return (
+                      <TableContainer key={record.id}>
+                        <Text>{quizesKeys[record.quiz]}</Text>
+                        <Text>{record.score}</Text>
+                      </TableContainer>
+                    );
+                  })}
+                </>
+              ) : (
+                <Loading />
+              )}
+            </InfoContainer>
           </ProfilePageContainer>
         )}
       </MainContentContainer>
@@ -134,7 +171,9 @@ export const getServerSideProps = async (ctx) => {
         permanent: false
       }
     };
-
+  // const {
+  //   data: { records, error }
+  // } = await supabase.from('records').select('*');
   return {
     props: {
       initialSession: session,

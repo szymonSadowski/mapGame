@@ -7,6 +7,25 @@ const SpanStyled = styled('span', {
   color: '$highlight'
 });
 
+const StyledContainer = styled('div', {
+  alignItems: 'center',
+  display: 'flex',
+  justifyContent: 'center',
+  width: '100%'
+});
+const StyledChildrenContainer = styled('div', {
+  maxWidth: '80%',
+  minWidth: 800,
+  px: '$4',
+  '@bp2': {
+    maxWidth: '100%',
+    minWidth: 500
+  },
+  '@bp1': {
+    maxWidth: '100%',
+    minWidth: 350
+  }
+});
 export const Layout = ({ header, subTitle, children }) => {
   return (
     <div>
@@ -25,7 +44,9 @@ export const Layout = ({ header, subTitle, children }) => {
             {subTitle?.length > 0 && <h2 className={SubTitle()}>{subTitle}</h2>}
           </Header>
         )}
-        {children}
+        <StyledContainer>
+          <StyledChildrenContainer>{children}</StyledChildrenContainer>
+        </StyledContainer>
       </Container>
     </div>
   );

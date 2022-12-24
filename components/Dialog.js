@@ -81,7 +81,7 @@ export const Dialog = ({ open, setOpen, completed, score }) => {
               </Button>
             </AlertDialog.Action>
             <AlertDialog.Action asChild>
-              <Link href="/select" passHref legacyBehavior>
+              <Link href="/quiz" passHref legacyBehavior>
                 <Button variant="secondary">Sure!</Button>
               </Link>
             </AlertDialog.Action>

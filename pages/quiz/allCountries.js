@@ -1,38 +1,15 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import { CountriesMap, Countdown, ProgressBar, Dialog, Loading } from '../../components';
 import { useQuery } from 'react-query';
-import { styled, Button, Input, Text, SectionTitle, InputContainer } from '../../styles';
+import { Button, Input, Text, SectionTitle, InputContainer, Answers, Answer } from '../../styles';
 import { capitalize } from '../../utils';
 import { getCountries } from '../../api';
 import { STATUS } from '../../consts/statuses';
 import { Layout } from '../../components/Layouts';
 import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react';
+import { Info, InfoContainer } from '../../styles/info';
 
-const InfoContainer = styled('div', {
-  color: 'white',
-  backgroundColor: '$subtleBackground',
-  boxShadow: `0 2px 10px $colors$shadow`,
-  mt: '$4',
-  p: '$4'
-});
-
-const Info = styled('div', {
-  display: 'flex',
-  justifyContent: 'space-around',
-  p: '$4',
-  mb: '$2',
-  borderBottom: '2px solid $colors$border'
-});
-const Answers = styled('div', {
-  display: 'grid',
-  gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr'
-});
-
-const Answer = styled('div', {
-  p: '$2'
-});
-
-export default function Quiz() {
+export default function AllCountries() {
   const supabase = useSupabaseClient();
   const user = useUser();
   const [guessedCountries, setGuessedCountries] = useState(['Spain']);
@@ -40,9 +17,14 @@ export default function Quiz() {
   const [open, setOpen] = useState(true);
   const [loading, setLoading] = useState(false);
   const { data, error, isLoading } = useQuery('countries', getCountries);
+  let countries = [];
+  useEffect(() => {
+    if (status === STATUS.COMPLETED || status === STATUS.FINISHED) {
+      user && postScores();
+    }
+  }, [status]);
   if (error) return <div>Request Failed</div>;
   if (isLoading || loading) return <Loading />;
-  let countries = [];
   data.map((country) => {
     country.independent && countries.push(country.name.common);
   });
@@ -56,27 +38,41 @@ export default function Quiz() {
       setStatus(STATUS.COMPLETED);
     }
   };
-
   const score = `${guessedCountries.length} / ${countries.length}`;
   async function postScores() {
     try {
       setLoading(true);
-      const { data, error } = await supabase
+      let { data } = await supabase
         .from('records')
-        .insert([
-          {
-            user_id: user.id,
-            created_at: new Date().toISOString(),
-            quiz: 'test',
-            score: 150
-          }
-        ])
-        .single();
-      if (error) throw error;
-      console.log(data);
+        .select('*')
+        .match({ user_id: user.id, quiz: 'allcountries' });
+      if (data.length > 0) {
+        const { error } = await supabase
+          .from('records')
+          .update([
+            {
+              updated_at: new Date().toISOString(),
+              score: score
+            }
+          ])
+          .eq('id', data[0].id);
+        if (error) throw error;
+      } else {
+        const { error } = await supabase
+          .from('records')
+          .insert([
+            {
+              user_id: user.id,
+              created_at: new Date().toISOString(),
+              quiz: 'allcountries',
+              score: score
+            }
+          ])
+          .single();
+        if (error) throw error;
+      }
     } catch (error) {
-      alert(error);
-      console.log(error);
+      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -132,7 +128,6 @@ export default function Quiz() {
               );
             })}
           </Answers>
-          <button onClick={postScores} />
         </InfoContainer>
       </main>
     </Layout>

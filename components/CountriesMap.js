@@ -1,6 +1,6 @@
 import { styled } from '../styles/stitches.config';
 import { React } from 'react';
-import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simple-maps';
+import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from 'react-simple-maps';
 import { blackA } from '@radix-ui/colors';
 const Container = styled('main', {
   // height: '80%'
@@ -93,6 +93,9 @@ export const CountriesMap = ({ guessedCountries }) => {
                 })
               }
             </Geographies>
+            <Marker coordinates={[-74.006, 40.7128]}>
+              <circle r={8} fill="#F53" />
+            </Marker>
           </ZoomableGroup>
         </ComposableMap>
       </QuizContainer>
