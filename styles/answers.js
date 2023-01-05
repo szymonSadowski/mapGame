@@ -1,6 +1,6 @@
 import { styled } from './stitches.config';
 
-export const Answers = styled('div', {
+export const AnswersContainer = styled('div', {
   display: 'grid',
   gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr',
   '@bp2': {

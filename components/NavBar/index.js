@@ -34,13 +34,19 @@ export const NavBar = () => {
   const isMobile = useMediaQuery('(max-width: 450px)');
   const session = useSession();
   const supabase = useSupabaseClient();
-  const SingOutButton = () => {
+  const SignButton = () => {
     return (
       <>
-        {session && (
+        {session ? (
           <Link href="/">
             <Button variant={'secondary'} size="sm" onClick={() => supabase.auth.signOut()}>
               Sign Out
+            </Button>
+          </Link>
+        ) : (
+          <Link href="/login">
+            <Button variant={'primary'} size="sm">
+              Login
             </Button>
           </Link>
         )}
@@ -52,7 +58,7 @@ export const NavBar = () => {
       <ThemeToggle />
       {isMobile ? (
         <NavMobile>
-          <SingOutButton />
+          <SignButton />
         </NavMobile>
       ) : (
         <NavItemsContainer>
@@ -79,7 +85,7 @@ export const NavBar = () => {
                 <Text className={PointerText()}>Profile</Text>
               </Link>
             )}
-            <SingOutButton />
+            <SignButton />
           </NavButtonsContainer>
         </NavItemsContainer>
       )}

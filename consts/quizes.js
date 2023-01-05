@@ -12,6 +12,11 @@ export const quizes = [
 ];
 
 export const quizesKeys = {
-  allcountries: 'Guess countries',
-  allcapitols: 'Guess capitols'
+  allCountries: 'Guess countries',
+  allCapitols: 'Guess capitols'
+};
+
+export const QUIZ = {
+  ALLCAPITOLS: 'allCapitols',
+  ALLCOUNTIRES: 'allCountries'
 };

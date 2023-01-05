@@ -40,14 +40,9 @@ export default function Home({ session }) {
         </h2>
       </Header>
       <MainContentContainer>
-        <Button variant="primary" size="lg">
+        <Button variant="primary" size="xl">
           <Link href="/quiz">
             <LinkStyled>Select Game</LinkStyled>
-          </Link>
-        </Button>
-        <Button variant="secondary" size="lg">
-          <Link href="/login">
-            <LinkStyled>Login</LinkStyled>
           </Link>
         </Button>
       </MainContentContainer>

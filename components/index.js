@@ -6,3 +6,4 @@ export * from './Progress';
 export * from './Header';
 export * from './Dialog';
 export * from './Loading';
+export * from './Answers';

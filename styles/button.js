@@ -63,6 +63,12 @@ export const Button = styled('button', {
         fontSize: '$lg',
         // height: '$12',
         minWidth: '120px'
+      },
+      xl: {
+        px: '$8',
+        fontSize: '$xl',
+        // height: '$12',
+        minWidth: '160px'
       }
     },
     icon: {

@@ -157,9 +157,8 @@ export default function Profile({ session }) {
 }
 
 export const getServerSideProps = async (ctx) => {
-  // Create authenticated Supabase Client
   const supabase = createServerSupabaseClient(ctx);
-  // Check if we have a session
+
   const {
     data: { session }
   } = await supabase.auth.getSession();
@@ -171,9 +170,6 @@ export const getServerSideProps = async (ctx) => {
         permanent: false
       }
     };
-  // const {
-  //   data: { records, error }
-  // } = await supabase.from('records').select('*');
   return {
     props: {
       initialSession: session,
