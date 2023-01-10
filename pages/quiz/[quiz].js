@@ -50,8 +50,6 @@ export default function AllCountries() {
       setStatus(STATUS.COMPLETED);
     }
   };
-
-  const score = `${guessed.length} / ${geoPlaces.length}`;
   async function postScores() {
     try {
       setLoading(true);
@@ -65,7 +63,7 @@ export default function AllCountries() {
           .update([
             {
               updated_at: new Date().toISOString(),
-              score: score
+              score: guessed.length
             }
           ])
           .eq('id', data[0].id);
@@ -78,7 +76,8 @@ export default function AllCountries() {
               user_id: user.id,
               created_at: new Date().toISOString(),
               quiz: quiz,
-              score: score
+              score: guessed.length,
+              max_score: geoPlaces.length
             }
           ])
           .single();
@@ -90,6 +89,7 @@ export default function AllCountries() {
       setLoading(false);
     }
   }
+  const score = `${guessed.length} / ${geoPlaces.length}`;
   return (
     <Layout header>
       <main>

@@ -75,6 +75,12 @@ export const NavBar = () => {
               }}>
               <Text className={PointerText()}>Quizes</Text>
             </Link>
+            <Link
+              href={{
+                pathname: '/records'
+              }}>
+              <Text className={PointerText()}>Records</Text>
+            </Link>
           </NavButtonsContainer>
           <NavButtonsContainer>
             {session && (

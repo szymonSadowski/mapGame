@@ -8,17 +8,11 @@ export const FormContainer = styled('div', {
   alignItems: 'center',
   justifyItems: 'center',
   p: '$4',
-  width: '40%',
-  maxHeight: 600,
   borderRadius: 4,
   overflow: 'hidden',
-  boxShadow: `0 2px 10px $colors$shadow`,
-  '@bp2': {
-    width: '100%'
-  }
+  boxShadow: `0 2px 10px $colors$shadow`
 });
 export const FormLine = styled('div', {
-  width: '100%',
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',

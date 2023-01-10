@@ -9,14 +9,12 @@ import {
   MainContentContainer,
   ProfilePageContainer,
   SectionTitle,
-  Text,
-  InfoContainer,
-  TableContainer
+  Text
 } from '../styles';
 import { Loading } from '../components';
 import Avatar from '../components/Avatar';
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs';
-import { quizesKeys } from '../consts/quizes';
+import { RecordTable } from '../components/RecordTable';
 
 export default function Profile({ session }) {
   const supabase = useSupabaseClient();
@@ -77,10 +75,9 @@ export default function Profile({ session }) {
   async function getRecords() {
     try {
       setLoading(true);
-      let { data, error } = await supabase.from('records').select('*');
+      let { data, error } = await supabase.from('records').select('*').eq('user_id', user.id);
       if (error) throw error;
       if (data) {
-        console.log(data);
         setRecords(data);
       }
     } catch (error) {
@@ -93,7 +90,7 @@ export default function Profile({ session }) {
   return (
     <Layout header subTitle={'Your Profile'}>
       <MainContentContainer>
-        {loading ? (
+        {loading || !user ? (
           <Loading />
         ) : (
           <ProfilePageContainer>
@@ -129,26 +126,7 @@ export default function Profile({ session }) {
               disabled={loading}>
               {loading ? 'Loading ...' : 'Update'}
             </Button>
-            <InfoContainer>
-              <TableContainer>
-                <Text className={SectionTitle()}>Quiz</Text>
-                <Text className={SectionTitle()}>Score</Text>
-              </TableContainer>
-              {records ? (
-                <>
-                  {records.map((record) => {
-                    return (
-                      <TableContainer key={record.id}>
-                        <Text>{quizesKeys[record.quiz]}</Text>
-                        <Text>{record.score}</Text>
-                      </TableContainer>
-                    );
-                  })}
-                </>
-              ) : (
-                <Loading />
-              )}
-            </InfoContainer>
+            <RecordTable records={records} />
           </ProfilePageContainer>
         )}
       </MainContentContainer>
