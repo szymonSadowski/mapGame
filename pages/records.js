@@ -4,10 +4,6 @@ import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs';
 import { RecordTable } from '../components/RecordTable';
 
 export default function Records({ records }) {
-  // const session = useSession();
-  // const supabase = useSupabaseClient();
-  // const router = useRouter();
-  console.log(records);
   return (
     <Layout header>
       <MainContentContainer>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSupabaseClient } from '@supabase/auth-helpers-react';
 import Image from 'next/image';
-import { PointerText, styled, Text } from '../styles';
+import { styled, Text } from '../styles';
 
 const UploadLabel = styled(Text, {
   color: '$text',

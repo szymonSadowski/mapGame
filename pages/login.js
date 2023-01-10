@@ -20,7 +20,7 @@ export default function Login() {
   return (
     <Layout header>
       <MainContentContainer>
-          <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} theme="dark" />
+        <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} theme="dark" />
       </MainContentContainer>
     </Layout>
   );

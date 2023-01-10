@@ -111,7 +111,7 @@ export default function AllCountries() {
               </Button>
             ) : (
               <>
-                <Countdown timeForQuiz={10} status={status} setStatus={setStatus} />
+                <Countdown timeForQuiz={1500} status={status} setStatus={setStatus} />
                 <Input
                   placeholder={'Guess...'}
                   onChange={handleOnChange}
