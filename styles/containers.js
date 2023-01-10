@@ -2,14 +2,13 @@ import { styled } from './stitches.config';
 
 export const Container = styled('div', {
   minHeight: '95vh',
-  backgroundImage: `url('./map_background.png')`,
+  backgroundImage: `url('./map_background_opacity.png')`,
   backgroundAttachment: 'fixed',
   backgroundPosition: 'bottom',
   p: '$5',
   backgroundColor: '$appBackground',
   backgroundRepeat: 'no-repeat',
   '@bp2': {
-    backgroundImage: `url('./map_background_opacity.png')`,
     marginBottom: '$10'
   }
 });
