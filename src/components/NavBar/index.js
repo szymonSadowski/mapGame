@@ -73,19 +73,22 @@ export const NavBar = () => {
             <Link
               href={{
                 pathname: '/'
-              }}>
+              }}
+            >
               <Text className={PointerText()}>Home</Text>
             </Link>
             <Link
               href={{
                 pathname: '/quiz'
-              }}>
+              }}
+            >
               <Text className={PointerText()}>Quizes</Text>
             </Link>
             <Link
               href={{
                 pathname: '/records'
-              }}>
+              }}
+            >
               <Text className={PointerText()}>Records</Text>
             </Link>
           </NavButtonsContainer>
@@ -94,7 +97,8 @@ export const NavBar = () => {
               <Link
                 href={{
                   pathname: '/profile'
-                }}>
+                }}
+              >
                 <Text className={PointerText()}>Profile</Text>
               </Link>
             )}

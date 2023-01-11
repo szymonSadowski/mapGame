@@ -74,12 +74,14 @@ export const CountriesMap = ({ guessed, quiz, geoPlaces }) => {
           style={{
             width: '100%',
             height: 'auto'
-          }}>
+          }}
+        >
           <ZoomableGroup
             translateExtent={[
               [0, 0],
               [mapWidth, mapHeight]
-            ]}>
+            ]}
+          >
             <Geographies geography="/features.json">
               {({ geographies }) =>
                 geographies.map((geo) => {

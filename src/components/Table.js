@@ -102,7 +102,8 @@ export const ScrollAreaComponent = ({ data, children }) => {
                 <Link
                   href={{
                     pathname: `/quiz/${quiz.key}`
-                  }}>
+                  }}
+                >
                   <Button variant="secondary" size="lg" icon="true">
                     {' '}
                     Play
