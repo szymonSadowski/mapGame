@@ -1,2 +1,2 @@
 export * from './capitalize';
-export * from './helpers';
+export * from './queries';

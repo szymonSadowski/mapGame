@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
+import { useState } from 'react';
+import { useUser } from '@supabase/auth-helpers-react';
 import { Layout } from '../components/Layouts';
 import {
   Button,
@@ -12,81 +12,26 @@ import {
   Text
 } from '../styles';
 import { Loading } from '../components';
-import Avatar from '../components/Avatar';
+
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs';
 import { RecordTable } from '../components/RecordTable';
+import { useProfileQuery, useRecordsQuery, useUpdateProfileMutation } from '../hooks';
 
-export default function Profile({ session }) {
-  const supabase = useSupabaseClient();
+export default function Profile() {
   const user = useUser();
-  const [loading, setLoading] = useState(true);
-  const [username, setUsername] = useState(null);
-  const [avatar_url, setAvatarUrl] = useState(null);
-  const [records, setRecords] = useState(null);
-  useEffect(() => {
-    getProfile();
-    getRecords();
-  }, [session]);
-  async function getProfile() {
-    try {
-      setLoading(true);
-      let { data, error, status } = await supabase
-        .from('profiles')
-        .select(`username, website, avatar_url`)
-        .eq('id', user.id)
-        .single();
+  const [username, setUsername] = useState('');
+  const { data: profile, isLoading: profileLoading } = useProfileQuery(user);
+  const { data: records, isLoading: recordsLoading } = useRecordsQuery(user);
+  const updateProfileMutation = useUpdateProfileMutation();
 
-      if (error && status !== 406) {
-        throw error;
-      }
+  const onSumbit = () => {
+    updateProfileMutation.mutate({
+      id: user.id,
+      username: username
+    });
+  };
 
-      if (data) {
-        setUsername(data.username);
-        setAvatarUrl(data.avatar_url);
-      }
-    } catch (error) {
-      alert('Error loading user data!');
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function updateProfile({ username, avatar_url }) {
-    try {
-      setLoading(true);
-      const updates = {
-        id: user.id,
-        username,
-        avatar_url,
-        updated_at: new Date().toISOString()
-      };
-
-      let { error } = await supabase.from('profiles').upsert(updates);
-      if (error) throw error;
-      alert('Profile updated!');
-    } catch (error) {
-      alert('Error updating the data!');
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  }
-  async function getRecords() {
-    try {
-      setLoading(true);
-      let { data, error } = await supabase.from('records').select('*').eq('user_id', user.id);
-      if (error) throw error;
-      if (data) {
-        setRecords(data);
-      }
-    } catch (error) {
-      alert('Error fetching the data!');
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  }
+  const loading = recordsLoading || profileLoading;
   return (
     <Layout header subTitle={'Your Profile'}>
       <MainContentContainer>
@@ -95,35 +40,26 @@ export default function Profile({ session }) {
         ) : (
           <ProfilePageContainer>
             <FlexContainer>
-              <Avatar
-                uid={user.id}
-                url={avatar_url}
-                size={150}
-                onUpload={(url) => {
-                  setAvatarUrl(url);
-                  updateProfile({ username, avatar_url: url });
-                }}
-              />
               <FlexContainerColumn>
                 <FlexContainer>
                   <Text className={SectionTitle()}>Email</Text>
                   <Input id="email" type="text" value={user.email} disabled />
                 </FlexContainer>
                 <FlexContainer>
-                  <Text className={SectionTitle()}>Username</Text>
+                  <Text className={SectionTitle()}>
+                    {profile.username ? <>{profile.username}</> : <>Username</>}
+                  </Text>
                   <Input
                     id="username"
                     type="text"
+                    placeholder="new name"
                     value={username || ''}
                     onChange={(e) => setUsername(e.target.value)}
                   />
                 </FlexContainer>
               </FlexContainerColumn>
             </FlexContainer>
-            <Button
-              variant="primary"
-              onClick={() => updateProfile({ username, avatar_url })}
-              disabled={loading}>
+            <Button variant="primary" onClick={() => onSumbit()} disabled={loading}>
               {loading ? 'Loading ...' : 'Update'}
             </Button>
             <RecordTable records={records} />

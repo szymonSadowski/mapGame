@@ -5,6 +5,7 @@ import { ThemeToggle } from '../ThemeToggle';
 import Link from 'next/link';
 import useMediaQuery from '../../hooks/useMediaQuery';
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react';
+import { useRouter } from 'next/router';
 
 const NavBarContainer = styled('nav', {
   position: 'fixed',
@@ -34,12 +35,18 @@ export const NavBar = () => {
   const isMobile = useMediaQuery('(max-width: 450px)');
   const session = useSession();
   const supabase = useSupabaseClient();
+  const router = useRouter();
+
+  const signOut = () => {
+    router.push('/');
+    supabase.auth.signOut();
+  };
   const SignButton = () => {
     return (
       <>
         {session ? (
           <Link href="/">
-            <Button variant={'secondary'} size="sm" onClick={() => supabase.auth.signOut()}>
+            <Button variant={'secondary'} size="sm" onClick={signOut}>
               Sign Out
             </Button>
           </Link>

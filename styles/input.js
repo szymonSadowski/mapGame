@@ -9,7 +9,7 @@ export const Input = styled('input', {
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: 4,
-  padding: '0 10px',
+  padding: '$1 $8',
   fontSize: '$lg',
   lineHeight: 1,
   color: '$highContrast',

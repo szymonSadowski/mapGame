@@ -37,9 +37,10 @@ export const ProfilePageContainer = styled('div', {
 export const FlexContainer = styled('div', {
   display: 'flex',
   gap: '$8',
+  flexDirection: 'column',
   width: '100%',
-  justifyContent: 'center',
-  alignItems: 'center'
+  justifyContent: 'center'
+  // alignItems: 'center'
 });
 export const FlexContainerColumn = styled('div', {
   display: 'flex',
