@@ -71,7 +71,8 @@ export default function AllCountries() {
                 variant="primary"
                 size="lg"
                 icon="true"
-                onClick={() => setStatus(STATUS.STARTED)}>
+                onClick={() => setStatus(STATUS.STARTED)}
+              >
                 {' '}
                 Start
               </Button>
